@@ -1,7 +1,9 @@
 
+import Navbar from "@/components/organism/navbar";
 import "./fonts.css";
 import "./globals.css";
 import { ApiProvider } from "@/api/providers/api-provider";
+import Footer from "@/components/organism/footer";
 
 
 export default function RootLayout({
@@ -10,9 +12,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="en" >
       <body>
-        <ApiProvider>{children}</ApiProvider>
+        <ApiProvider>
+          <Navbar />
+          <div className="min-h-screen">
+            {children}
+          </div>
+          <Footer />
+        </ApiProvider>
       </body>
     </html>
   );
