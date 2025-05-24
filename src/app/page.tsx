@@ -2,7 +2,8 @@
 
 import Header from "@/components/molecules/header";
 import AboutSection from "@/components/organism/about-section";
-import PricingPlans from "@/components/organism/PricingPlans";
+import CommentsSlider from "@/components/organism/CommentsSlider";
+import ElectricalEngineeringSection from "@/components/organism/ElectricalEngineeringSection";
 import ServicesSection from "@/components/organism/ServicesSection";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
   return (
     <div >
       <Header />
-      <AboutSection />
+      <AboutSection isMain />
       <ServicesSection />
-      <PricingPlans />
+      <ElectricalEngineeringSection />
+      <CommentsSlider />
     </div>
   );
 }

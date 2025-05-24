@@ -5,7 +5,7 @@ import type {
 } from "@/api/types/api.types";
 import { useMutation } from "@tanstack/react-query";
 import { postLogin } from "./post-login";
-import {} from "./post-login.schema";
+import { } from "./post-login.schema";
 import type {
   PostLoginRequest,
   PostLoginResponseTransformed,

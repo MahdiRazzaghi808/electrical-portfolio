@@ -37,24 +37,26 @@ const plans = [
 
 const PricingPlans = () => {
   return (
-    <section id="pricing" className="py-20 bg-white">
+    <section id="pricing" className="container mx-auto p-6 py-12 bg-white rounded-md shadow-md my-12 relative overflow-hidden">
+      <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#ffbd39] rounded-full blur-3xl opacity-30 animate-pulse"></div>
+      <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-yellow-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2">Pricing Plans</h2>
+          <h2 className="text-3xl font-bold mb-2 text-foreground">Service Plans</h2>
           <p className="text-gray-600">Choose a plan that fits your needs</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className="border rounded-2xl p-6 shadow hover:shadow-lg transition-all text-center"
+              className="bg-[#f3f3f3]  rounded-2xl p-6 shadow hover:shadow-xl transition-all text-center"
             >
-              <h3 className="text-xl font-semibold mb-2">{plan.title}</h3>
-              <p className="text-3xl font-bold mb-4">{plan.price}</p>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">{plan.title}</h3>
+              <p className="text-3xl font-bold mb-4 text-primary">{plan.price}</p>
               <ul className="text-gray-600 mb-6 space-y-2 text-left">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <Check className="text-green-500 w-4 h-4" />
+                    <Check className="text-primary w-4 h-4" />
                     {feature}
                   </li>
                 ))}

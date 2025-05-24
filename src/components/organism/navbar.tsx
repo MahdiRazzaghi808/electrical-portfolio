@@ -1,51 +1,118 @@
-'use client';
-
-import { ArrowRight, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/atoms/button";
+import {
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+} from "@/components/atoms/navigation-menu";
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/atoms/sheet";
 import Link from "next/link";
-import { Button } from "../atoms/button";
+import Image from "next/image";
 
-export default function Navbar() {
+interface MenuItem {
+    title: string;
+    url: string;
+}
+
+interface NavbarProps {
+    logo?: {
+        url: string;
+        src: string;
+        alt: string;
+        title: string;
+    };
+    menu?: MenuItem[];
+}
+
+const Navbar = ({
+    menu = [
+        { title: "Home", url: "/" },
+        { title: "Projects", url: "/projects" },
+        { title: "Services", url: "/services" },
+        { title: "About Us", url: "/about-us" },
+        { title: "Booking", url: "/booking" },
+    ],
+}: NavbarProps) => {
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/70">
-            <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
-
-                {/* Logo */}
-                <Link href="/" className="text-xl font-bold text-primary">
-                    MyBrand
-                </Link>
-
+        <section className="py-4 bg-white sticky top-0 z-[999] shadow-lg" dir="ltr">
+            <div className="container">
                 {/* Desktop Menu */}
-                <nav className="hidden space-x-6 md:flex">
-                    <Link href="/" className="text-sm font-medium hover:text-primary">
-                        Home
-                    </Link>
-                    <Link href="/about" className="text-sm font-medium hover:text-primary">
-                        About
-                    </Link>
-                    <Link href="/services" className="text-sm font-medium hover:text-primary">
-                        Services
-                    </Link>
-                    <Link href="/projects" className="text-sm font-medium hover:text-primary">
-                        Projects
-                    </Link>
+                <nav className="hidden w-full lg:flex">
+                    <div className="w-full flex items-center justify-between gap-6">
 
+                        {/* Navigation Menu */}
+                        <NavigationMenu>
+                            <NavigationMenuList>
+                                {menu.map((item) => (
+                                    <NavigationMenuItem key={item.title}>
+                                        <NavigationMenuLink
+                                            href={item.url}
+                                            className="group inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-zinc-900  hover:text-primary"
+                                        >
+                                            {item.title}
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
+                                ))}
+                            </NavigationMenuList>
+                        </NavigationMenu>
+
+                        <p className="text-xl font-bold text-primary">My Brand</p>
+                        <Image src="/images/flag.svg" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
+
+                    </div>
                 </nav>
 
-                {/* Actions */}
-                <div className="flex items-center gap-4">
-                    <Button variant="outline" size="sm">
-                        <span>
-                            Booking
-                        </span>
-                        <ArrowRight  size={16}/>
-                    </Button>
-                </div>
+                {/* Mobile Menu */}
+                <div className="block lg:hidden">
+                    <div className="flex items-center justify-between">
+                        
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon">
+                                    <Menu className="size-8 text-zinc-900" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent className="overflow-y-auto flex flex-col" dir="ltr" side="left">
+                                <SheetHeader>
+                                    <SheetTitle>
+                                        <Link href={"/"} className="text-primary">
+                                            My Brands
+                                        </Link>
+                                    </SheetTitle>
+                                </SheetHeader>
 
-                {/* Mobile Menu Icon */}
-                <button className="md:hidden">
-                    <Menu className="h-5 w-5" />
-                </button>
+                                <div className="mt-6 flex flex-col space-y-2">
+                                    {menu.map((item) => (
+                                        <Link
+                                            key={item.title}
+                                            href={item.url}
+                                            className="px-4 py-3 text-sm font-medium rounded-md text-zinc-800 hover:bg-muted hover:text-primary"
+                                        >
+                                            {item.title}
+                                        </Link>
+                                    ))}
+                                </div>
+
+                                <Image src="/images/flag.svg" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
+                            </SheetContent>
+                        </Sheet>
+
+
+
+                        <p className="text-xl font-bold text-primary">My Brand</p>
+
+                    </div>
+                </div>
             </div>
-        </header>
+        </section>
     );
-}
+};
+
+export default Navbar;

@@ -1,9 +1,9 @@
 
+import { ApiProvider } from "@/api/providers/api-provider";
+import Footer from "@/components/organism/footer";
 import Navbar from "@/components/organism/navbar";
 import "./fonts.css";
 import "./globals.css";
-import { ApiProvider } from "@/api/providers/api-provider";
-import Footer from "@/components/organism/footer";
 
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
-      <body>
+      <body className="">
         <ApiProvider>
           <Navbar />
           <div className="min-h-screen">

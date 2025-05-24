@@ -5,17 +5,17 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/utils/cn';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center text-slate-800 gap-2 whitespace-nowrap rounded-[20px] text-base font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ',
+  'inline-flex items-center justify-center text-secondary gap-2 whitespace-nowrap rounded-[20px] text-base font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ',
   {
     variants: {
       variant: {
-        default: 'bg-sky-600 text-white hover:bg-sky-600/80',
+        default: 'bg-primary text-secondary hover:bg-primary/80',
         destructive: 'bg-[#E53935] text-white hover:bg-[#E53935]/80',
         success: 'bg-emerald-600 text-white hover:bg-emerald-600/80',
-        outline: 'border border-slate-800  text-slate-800',
-        secondary: 'bg-white text-slate-800 hover:bg-white/70',
-        ghost: 'hover:bg-slate-200 hover:text-slate-800',
-        link: 'text-slate-800 underline-offset-4 hover:underline',
+        outline: 'border border-secondary text-secondary hover:bg-secondary hover:text-white',
+        secondary: 'bg-secondary text-white hover:bg-secondary/80',
+        ghost: 'hover:bg-secondary/10 hover:text-secondary',
+        link: 'text-secondary underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-10 px-4 py-2',
