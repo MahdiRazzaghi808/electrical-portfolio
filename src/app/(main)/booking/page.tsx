@@ -1,13 +1,13 @@
-import BookingSection from '@/components/BookingSection'
-import React from 'react'
+"use client";
 
-function page() {
-    return (
-        <div>
-            <BookingSection />
+import dynamic from 'next/dynamic';
 
-        </div>
-    )
+const BookingSection = dynamic(() => import('@/components/BookingSection'), { ssr: false });
+
+export default function Page() {
+  return (
+    <div>
+      <BookingSection />
+    </div>
+  );
 }
-
-export default page

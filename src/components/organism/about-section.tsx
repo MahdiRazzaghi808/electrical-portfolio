@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Github } from 'lucide-react';
 
-const AboutSection = ({ isMain }: { isMain: boolean }) => {
+const AboutSection = ({ isMain }: { isMain?: boolean }) => {
   return (
     <section className="container mx-auto p-6 bg-white rounded-md shadow-md my-12 relative overflow-hidden">
       {!isMain && <>
