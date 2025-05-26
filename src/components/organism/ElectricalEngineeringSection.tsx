@@ -1,25 +1,55 @@
-// components/sections/ElectricalEngineeringSection.tsx
+"use client";
 
 import { Button } from "../atoms/button";
+import { motion } from "framer-motion";
 
 export default function ElectricalEngineeringSection() {
     return (
-        <section className="bg-[url('/images/banner.jpg')] bg-cover bg-center">
-            <div className="bg-[#00000060] w-full h-full  py-24 ">
-                <div className=" mx-auto text-center container">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        Electrical Engineering
-                    </h2>
-                    <p className="text-lg text-gray-200 leading-relaxed mb-8">
-                        Electrical engineering is a field of engineering that focuses on the study and application of electricity, electronics, and electromagnetism. It plays a critical role in developing modern technologies such as power generation systems, communication networks, electronic devices, and automation.
-                    </p>
+        <section
+            className="relative bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/banner.jpg')" }}
+            aria-labelledby="electrical-heading"
+        >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/60"></div>
 
-                    <Button className="text-[#010101] p-6  rounded-full bg-primary hover:bg-primary/90 ">
+            <div className="relative z-10 py-24 container mx-auto text-center px-4">
+                <motion.h2
+                    id="electrical-heading"
+                    className="text-3xl md:text-4xl font-bold text-white mb-6"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    Electrical Engineering
+                </motion.h2>
+
+                <motion.p
+                    className="text-lg text-gray-200 leading-relaxed mb-8"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    Electrical engineering is a field of engineering that focuses on the
+                    study and application of electricity, electronics, and
+                    electromagnetism. It plays a critical role in developing modern
+                    technologies such as power generation systems, communication networks,
+                    electronic devices, and automation.
+                </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.4 }}
+                    viewport={{ once: true }}
+                >
+                    <Button className="text-[#010101] px-8 py-4 rounded-full bg-primary hover:bg-primary/90 transition">
                         Start a Project
                     </Button>
-                </div>
+                </motion.div>
             </div>
-
         </section>
     );
 }

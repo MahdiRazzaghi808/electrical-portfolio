@@ -26,8 +26,8 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
             grabCursor
             loop
             modules={[EffectCards, Autoplay]}
-            className="w-[300px] h-[400px] p-20"
-            style={{ height: '400px' }}
+            className="w-[260px] h-[400px]"
+            style={{ height: '430px' }}
             autoplay={{
                 delay: 3500,
                 disableOnInteraction: false,
@@ -49,7 +49,7 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                         <img
                             src={comment.avatar}
                             alt={`${comment.name} avatar`}
-                            className="w-20 h-20 rounded-full border-4 border-yellow-400 shadow-md mb-5 object-cover"
+                            className="w-20 h-20 rounded-full mx-auto border-4 border-yellow-400 shadow-md mb-5 object-cover"
                         />
                     ) : (
                         <div
@@ -57,6 +57,7 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                 w-20 h-20 rounded-full border-4 border-yellow-400 shadow-md mb-5
                 bg-yellow-300 flex items-center justify-center
                 text-3xl font-bold text-yellow-900 select-none
+                mx-auto
               "
                         >
                             {comment.name.charAt(0)}
@@ -80,11 +81,11 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                         {comment.name}
                     </h3>
                     {comment.role && (
-                        <p className="text-yellow-500 text-xs italic mt-1">{comment.role}</p>
+                        <p className="text-yellow-500 text-xs italic my-2">{comment.role}</p>
                     )}
 
                     {comment.rating !== undefined && comment.rating !== null && (
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-center">
                             {Array.from({ length: 5 }).map((_, i) => (
                                 <Star
                                     key={i}

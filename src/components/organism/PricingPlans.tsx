@@ -1,6 +1,7 @@
-// components/PricingPlans.tsx
+"use client";
 import { Check } from 'lucide-react';
 import { Button } from '../atoms/button';
+import { motion } from 'framer-motion';
 
 const plans = [
   {
@@ -35,21 +36,35 @@ const plans = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.5, ease: 'easeOut' },
+  }),
+};
+
 const PricingPlans = () => {
   return (
     <section id="pricing" className="container mx-auto p-6 py-12 bg-white rounded-md shadow-md my-12 relative overflow-hidden">
       <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#ffbd39] rounded-full blur-3xl opacity-30 animate-pulse"></div>
       <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-yellow-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-      <div className="container mx-auto px-4">
+
+      <div className="container mx-auto px-4 overflow-hidden">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 text-foreground">Service Plans</h2>
           <p className="text-gray-600">Choose a plan that fits your needs</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-[#f3f3f3]  rounded-2xl p-6 shadow hover:shadow-xl transition-all text-center"
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={cardVariants}
+              className="bg-[#f3f3f3] rounded-2xl p-6 shadow hover:shadow-xl transition-all text-center"
             >
               <h3 className="text-xl font-semibold mb-2 text-foreground">{plan.title}</h3>
               <p className="text-3xl font-bold mb-4 text-primary">{plan.price}</p>
@@ -62,7 +77,7 @@ const PricingPlans = () => {
                 ))}
               </ul>
               <Button className="w-full">{plan.buttonLabel}</Button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
