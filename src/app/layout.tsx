@@ -1,9 +1,28 @@
-
 import { ApiProvider } from "@/api/providers/api-provider";
-import Footer from "@/components/organism/footer";
-import Navbar from "@/components/organism/navbar";
-import "./fonts.css";
+import type { Metadata } from "next";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+export const metadata: Metadata = {
+  title: "Electrical Engineer Portfolio",
+  description: "Showcase of projects, skills, and achievements of an electrical engineer.",
+  viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: "/flag.svg",
+  },
+};
 
 
 export default function RootLayout({
@@ -13,13 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
-      <body className="">
+      <body className={`${manrope.className} text-gray-900`}>
         <ApiProvider>
-          <Navbar />
-          <div className="min-h-screen">
-            {children}
-          </div>
-          <Footer />
+          {children}
         </ApiProvider>
       </body>
     </html>

@@ -113,6 +113,7 @@ export default function BookingSection() {
                 type="text"
                 name="name"
                 id="name"
+                className='w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition'
                 required
                 value={formData.name}
                 onChange={handleChange}
@@ -125,6 +126,7 @@ export default function BookingSection() {
                 type="email"
                 name="email"
                 id="email"
+                className='w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition'
                 required
                 value={formData.email}
                 onChange={handleChange}
@@ -137,6 +139,7 @@ export default function BookingSection() {
                 type="tel"
                 name="phone"
                 id="phone"
+                className='w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition'
                 required
                 value={formData.phone}
                 onChange={handleChange}
@@ -149,7 +152,7 @@ export default function BookingSection() {
                 name="message"
                 id="message"
                 rows={4}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition"
                 value={formData.message}
                 onChange={handleChange}
               />

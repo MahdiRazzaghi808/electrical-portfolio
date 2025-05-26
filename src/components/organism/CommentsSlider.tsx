@@ -7,24 +7,50 @@ const comments = [
   {
     name: 'Alex Johnson',
     text: 'Great experience working together! The electrical solutions provided were innovative and reliable.',
+    role: 'Electrical Engineer',        
+    avatar: 'https://randomuser.me/api/portraits/men/1.jpg',  
+    date: '2024-05-20',             
+    rating: 5,                         
+    location: 'New York, USA',       
   },
   {
     name: 'Maria Lee',
     text: 'Professional and detail-oriented. Highly recommend for any electrical engineering project.',
+    role: 'Project Manager',
+    avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+    date: '2024-04-15',
+    rating: 4,
+    location: 'London, UK',
   },
   {
     name: 'Samir Patel',
     text: 'Delivered on time and exceeded expectations. The automation system works flawlessly.',
+    role: 'Automation Specialist',
+    avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+    date: '2024-03-10',
+    rating: 5,
+    location: 'Mumbai, India',
   },
   {
     name: 'Alex Johnson1',
     text: 'Great experience working together! The electrical solutions provided were innovative and reliable.',
+    role: 'Electrical Engineer',
+    avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+    date: '2024-01-05',
+    rating: 4,
+    location: 'Toronto, Canada',
   },
   {
     name: 'Alex Johnson2',
     text: 'Great experience working together! The electrical solutions provided were innovative and reliable.',
+    role: 'Electrical Engineer',
+    avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+    date: '2023-12-25',
+    rating: 5,
+    location: 'Sydney, Australia',
   },
 ];
+
 
 const CommentsSlider = () => {
 

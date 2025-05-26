@@ -1,3 +1,4 @@
+"use client";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import {
@@ -15,6 +16,7 @@ import {
 } from "@/components/atoms/sheet";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 interface MenuItem {
     title: string;
@@ -40,6 +42,7 @@ const Navbar = ({
         { title: "Booking", url: "/booking" },
     ],
 }: NavbarProps) => {
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <section className="py-4 bg-white sticky top-0 z-[999] shadow-lg" dir="ltr">
             <div className="container">
@@ -64,22 +67,22 @@ const Navbar = ({
                         </NavigationMenu>
 
                         <p className="text-xl font-bold text-primary">My Brand</p>
-                        <Image src="/images/flag.svg" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
+                        <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
 
                     </div>
                 </nav>
 
                 {/* Mobile Menu */}
-                <div className="block lg:hidden">
+                <div className="block lg:hidden ">
                     <div className="flex items-center justify-between">
-                        
-                        <Sheet>
+
+                        <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon">
+                                <Button variant="ghost" size="icon" onClick={() => setIsOpen(prev => !prev)}>
                                     <Menu className="size-8 text-zinc-900" />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent className="overflow-y-auto flex flex-col" dir="ltr" side="left">
+                            <SheetContent className="overflow-y-auto flex flex-col z-[999]" dir="ltr" side="left">
                                 <SheetHeader>
                                     <SheetTitle>
                                         <Link href={"/"} className="text-primary">
@@ -93,6 +96,7 @@ const Navbar = ({
                                         <Link
                                             key={item.title}
                                             href={item.url}
+                                            onClick={() => setIsOpen(prev => !prev)}
                                             className="px-4 py-3 text-sm font-medium rounded-md text-zinc-800 hover:bg-muted hover:text-primary"
                                         >
                                             {item.title}
@@ -100,7 +104,7 @@ const Navbar = ({
                                     ))}
                                 </div>
 
-                                <Image src="/images/flag.svg" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
+                                <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
                             </SheetContent>
                         </Sheet>
 
