@@ -68,7 +68,7 @@ const Navbar = ({
 
                         <p className="text-xl font-bold text-primary">My Brand</p>
                         {/* <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" /> */}
-                        <img src="/images/flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
+                        <img src="/images/Flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
                     </div>
                 </nav>
 
@@ -105,7 +105,7 @@ const Navbar = ({
                                 </div>
 
                                 {/* <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" /> */}
-                                <img src="/images/flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
+                                <img src="/images/Flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
                             </SheetContent>
                         </Sheet>
 

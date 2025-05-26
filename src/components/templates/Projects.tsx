@@ -124,7 +124,7 @@ export default function ProjectsPage() {
 
 
 
-                            <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
+                            <h2 className="text-2xl font-bold my-3">{selectedProject.title}</h2>
                             <p className="text-gray-700">{selectedProject.description}</p>
                         </motion.div>
                     </motion.div>

@@ -39,13 +39,24 @@ const CommentsSliderDesktop = ({ comments }: { comments: Comment[] }) => {
                         <p className="text-gray-700 italic mb-6 text-center min-h-[60px]">"{comment.text}"</p>
 
                         <div className="flex items-center justify-center gap-4">
-                            {comment.avatar && (
+                            {comment.avatar ?
                                 <img
                                     src={comment.avatar}
                                     alt={`${comment.name} avatar`}
                                     className="w-14 h-14 rounded-full object-cover border-2 border-primary"
                                 />
-                            )}
+                                :
+                                <div
+                                    className="
+               w-14 h-14 rounded-full object-cover border-2 border-primary
+                bg-yellow-300 flex items-center justify-center
+                text-3xl font-bold text-yellow-900 select-none
+              "
+                                >
+                                    {comment.name.charAt(0)}
+                                </div>
+
+                            }
                             <div className="text-center">
                                 <h3 className="font-semibold text-primary">{comment.name}</h3>
                                 {comment.role && (
