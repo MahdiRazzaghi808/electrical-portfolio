@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "../atoms/button";
 import { motion } from "framer-motion";
 
@@ -45,9 +46,9 @@ export default function ElectricalEngineeringSection() {
                     transition={{ delay: 0.4, duration: 0.4 }}
                     viewport={{ once: true }}
                 >
-                    <Button className="text-[#010101] px-8 py-4 rounded-full bg-primary hover:bg-primary/90 transition">
+                    <Link href="/booking" className="text-[#010101] px-8 py-4 rounded-full bg-primary hover:bg-primary/90 transition">
                         Start a Project
-                    </Button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

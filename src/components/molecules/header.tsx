@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "../atoms/button";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -15,9 +16,12 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Electric Power,
-            <br />
-            Bright Ideas.
+            <p>
+              Electric Power,
+            </p>
+            <p>
+              Bright Ideas.
+            </p>
           </motion.h1>
 
           <motion.p
@@ -34,12 +38,12 @@ export default function Header() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <Button
-              className="w-fit text-[#010101] p-6 rounded-full bg-primary hover:bg-primary/90"
-              aria-label="Schedule a consultation with an expert"
+            <Link
+              href="/booking"
+              className="w-fit text-[#010101] p-4 rounded-full bg-primary hover:bg-primary/90"
             >
               Schedule a Consultation
-            </Button>
+            </Link>
           </motion.div>
         </div>
       </div>
