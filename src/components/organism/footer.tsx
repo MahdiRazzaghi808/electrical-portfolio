@@ -62,16 +62,16 @@ export default function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-3">Trusted by</h3>
             <ul className="grid grid-cols-2 gap-4">
-              <li>
+              <li className="h-16 flex justify-start items-center">
                 <Image src="/images/google-review.png" alt="logo" width={500} height={500} className="w-20" />
               </li>
-              <li>
+              <li className="h-16 flex justify-start items-center">
                 <Image src="/images/electricalcompperson1.png" alt="logo" width={500} height={500} className="w-20" />
               </li>
-              <li>
+              <li className="h-16 flex justify-start items-center">
                 <Image src="/images/nic-eic-logo.png" alt="logo" width={500} height={500} className="w-20" />
               </li>
-              <li>
+              <li className="h-16 flex justify-start items-center">
                 <Image src="/images/checkatrade.png" alt="logo" width={500} height={500} className="w-20" />
               </li>
             </ul>
