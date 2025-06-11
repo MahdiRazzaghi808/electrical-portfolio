@@ -33,10 +33,10 @@ const CommentsSliderDesktop = ({ comments }: { comments: Comment[] }) => {
             {comments.map((comment, idx) => (
                 <SwiperSlide
                     key={idx}
-                    className="rounded-xl overflow-hidden bg-[#f3f3f3]  p-6"
+                    className="rounded-xl overflow-hidden bg-background  p-6"
                 >
                     <div className="flex flex-col justify-between h-full">
-                        <p className="text-gray-700 italic mb-6 text-center min-h-[60px]">"{comment.text}"</p>
+                        <p className="text-gray-300 italic mb-6 text-center min-h-[60px]">"{comment.text}"</p>
 
                         <div className="flex items-center justify-center gap-4">
                             {comment.avatar ?
@@ -49,8 +49,8 @@ const CommentsSliderDesktop = ({ comments }: { comments: Comment[] }) => {
                                 <div
                                     className="
                w-14 h-14 rounded-full object-cover border-2 border-primary
-                bg-yellow-300 flex items-center justify-center
-                text-3xl font-bold text-yellow-900 select-none
+                bg-primary flex items-center justify-center
+                text-3xl font-bold text-gray-200 select-none
               "
                                 >
                                     {comment.name.charAt(0)}
@@ -68,14 +68,14 @@ const CommentsSliderDesktop = ({ comments }: { comments: Comment[] }) => {
                             </div>
                         </div>
 
-                        <div className="mt-4 flex justify-center items-center gap-4 text-yellow-500">
+                        <div className="mt-4 flex justify-center items-center gap-4 text-primary">
                             {comment.rating !== undefined && comment.rating !== null && (
                                 <div className="flex items-center">
                                     {Array.from({ length: 5 }).map((_, i) => (
                                         <Star
                                             key={i}
                                             size={20}
-                                            className={i < comment.rating! ? 'text-yellow-400' : 'text-gray-300'}
+                                            className={i < comment.rating! ? 'text-primary' : 'text-gray-300'}
                                             fill={i < comment.rating! ? 'currentColor' : 'none'}
                                             strokeWidth={2}
                                         />

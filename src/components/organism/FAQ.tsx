@@ -57,12 +57,12 @@ const faqs = [
 
 export default function FAQ() {
     return (
-        <div className="container mx-auto p-6 bg-white rounded-md shadow-md mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">FAQ</h2>
+        <div className="container mx-auto p-6 bg-foreground rounded-md shadow-md mb-12">
+            <h2 className="text-3xl font-bold text-gray-100 mb-6 text-center">FAQ</h2>
             <Accordion.Root
                 type="multiple"
                 defaultValue={["item-1"]}
-                className="w-full mb-12 mx-auto rounded-md bg-white p-6"
+                className="w-full mb-12 mx-auto rounded-md bg-background p-6"
             >
                 {faqs.map(({ question, answer }, index) => (
                     <Accordion.Item
@@ -71,12 +71,12 @@ export default function FAQ() {
                         className="border-b border-gray-200 last:border-none"
                     >
                         <Accordion.Header>
-                            <Accordion.Trigger className="flex w-full justify-between py-4 text-lg font-semibold text-gray-900 hover:text-blue-600">
+                            <Accordion.Trigger className="flex w-full justify-between py-4 text-lg font-semibold text-gray-100 hover:text-primary">
                                 {question}
-                                <span className="text-blue-600">+</span>
+                                <span className="text-primary">+</span>
                             </Accordion.Trigger>
                         </Accordion.Header>
-                        <Accordion.Content className="overflow-hidden text-gray-700 px-5 pb-5 text-base">
+                        <Accordion.Content className="overflow-hidden text-gray-400 px-5 pb-5 text-base">
                             {answer}
                         </Accordion.Content>
                     </Accordion.Item>

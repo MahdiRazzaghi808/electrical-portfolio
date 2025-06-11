@@ -23,7 +23,7 @@ export default function ElectricalEngineeringSection() {
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    Electrical Engineering
+                    Reliable & Experienced Electrician in Manchester
                 </motion.h2>
 
                 <motion.p
@@ -33,11 +33,7 @@ export default function ElectricalEngineeringSection() {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    Electrical engineering is a field of engineering that focuses on the
-                    study and application of electricity, electronics, and
-                    electromagnetism. It plays a critical role in developing modern
-                    technologies such as power generation systems, communication networks,
-                    electronic devices, and automation.
+                    Call Us Today At 07984653016 , 07999553838 We are ready to help 24 hour
                 </motion.p>
 
                 <motion.div
@@ -47,7 +43,7 @@ export default function ElectricalEngineeringSection() {
                     viewport={{ once: true }}
                 >
                     <Link href="/booking" className="text-[#010101] px-8 py-4 rounded-full bg-primary hover:bg-primary/90 transition">
-                        Start a Project
+                        Click to Call
                     </Link>
                 </motion.div>
             </div>

@@ -95,7 +95,7 @@ export default function WhyUsPage() {
             transition={{ delay: index * 0.15, duration: 0.5 }}
           >
             <div className="flex-col lg:flex-row flex items-center justify-center gap-3 mb-3 h-44 md:h-24">
-              <CheckCircle className="text-green-500  w-8 h-8 basis-[20%] lg:basis-[%3]" />
+              <CheckCircle className="text-primary  w-8 h-8 basis-[20%] lg:basis-[%3]" />
               {/* <h2 className="text-xl font-semibold">{item.title}</h2> */}
               <p className="text-gray-400 basis-[80%] lg:basis-[97%]">{item.description}</p>
             </div>

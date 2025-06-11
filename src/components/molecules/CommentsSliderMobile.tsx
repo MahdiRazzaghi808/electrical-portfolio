@@ -38,8 +38,8 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                     key={idx}
                     className="
             rounded-3xl
-            bg-gradient-to-tr from-yellow-50 via-yellow-100 to-yellow-50
-             border-l-8 border-yellow-400
+            bg-gradient-to-tr from-red-50 via-red-100 to-red-50
+             border-l-8 border-primary
             p-6
             flex flex-col justify-center items-center
             text-center
@@ -49,14 +49,14 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                         <img
                             src={comment.avatar}
                             alt={`${comment.name} avatar`}
-                            className="w-20 h-20 rounded-full mx-auto border-4 border-yellow-400 shadow-md mb-5 object-cover"
+                            className="w-20 h-20 rounded-full mx-auto border-4 border-primary shadow-md mb-5 object-cover"
                         />
                     ) : (
                         <div
                             className="
-                w-20 h-20 rounded-full border-4 border-yellow-400 shadow-md mb-5
-                bg-yellow-300 flex items-center justify-center
-                text-3xl font-bold text-yellow-900 select-none
+                w-20 h-20 rounded-full border-4 border-primary shadow-md mb-5
+                bg-primary flex items-center justify-center
+                text-3xl font-bold text-gray-300 select-none
                 mx-auto
               "
                         >
@@ -67,21 +67,21 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                     <blockquote
                         className="
               relative
-              bg-white rounded-2xl p-5 text-gray-700 italic text-base font-medium
+              bg-foreground rounded-2xl p-5 text-gray-200 italic text-base font-medium
               shadow-md
               before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2
-              before:w-5 before:h-5 before:bg-yellow-400 before:rotate-45
+              before:w-5 before:h-5 before:bg-primary before:rotate-45
               before:rounded-sm before:shadow-sm
             "
                     >
                         "{comment.text}"
                     </blockquote>
 
-                    <h3 className="mt-5 text-yellow-700 font-extrabold text-lg tracking-wide">
+                    <h3 className="mt-5 text-gray-600 font-extrabold text-lg tracking-wide">
                         {comment.name}
                     </h3>
                     {comment.role && (
-                        <p className="text-yellow-500 text-xs italic my-2">{comment.role}</p>
+                        <p className="text-primary text-xs italic my-2">{comment.role}</p>
                     )}
 
                     {comment.rating !== undefined && comment.rating !== null && (
@@ -90,7 +90,7 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                                 <Star
                                     key={i}
                                     size={20}
-                                    className={i < comment.rating! ? 'text-yellow-400' : 'text-gray-300'}
+                                    className={i < comment.rating! ? 'text-primary' : 'text-gray-300'}
                                     fill={i < comment.rating! ? 'currentColor' : 'none'}
                                     strokeWidth={2}
                                 />

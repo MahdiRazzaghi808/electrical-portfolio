@@ -45,7 +45,7 @@ const Navbar = ({
 }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <section className="py-4 bg-foreground sticky top-0 z-[999] shadow-lg" dir="ltr">
+        <section className="py-4 bg-foreground sticky top-0 z-[900] shadow-lg" dir="ltr">
             <div className="container">
                 {/* Desktop Menu */}
                 <nav className="hidden w-full xl:flex xl:pl-24 2xl:pl-0">
@@ -54,7 +54,7 @@ const Navbar = ({
                         {/* Navigation Menu */}
                         <NavigationMenu>
                             <Link href="/" className="text-xl font-bold border-gray-200 border-r pr-3">
-                                <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-14" />
+                                <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-20" />
                             </Link>
 
                             <NavigationMenuList>
@@ -71,11 +71,19 @@ const Navbar = ({
                             </NavigationMenuList>
                         </NavigationMenu>
 
-                        <a href="tel:+989920801032" className="flex items-center gap-3 text-primary border border-primary p-2 rounded-lg hover:bg-primary hover:text-[#010101] transition duration-200 text-sm">
+                        <div className="flex flex-col gap-2">
+                            <a href="tel:07984653016" className="flex items-center gap-3 text-primary border border-primary p-1.5 rounded-lg hover:bg-primary hover:text-[#010101] transition duration-200 text-sm">
 
-                            <Phone size={20} />
-                            <span>09920801032</span>
-                        </a>
+                                <Phone size={20} />
+                                <span>07984653016</span>
+                            </a>
+                            <a href="tel:07999553838" className="flex items-center gap-3 text-primary border border-primary p-1.5 rounded-lg hover:bg-primary hover:text-[#010101] transition duration-200 text-sm">
+
+                                <Phone size={20} />
+                                <span>07999553838</span>
+                            </a>
+                        </div>
+
                     </div>
                 </nav>
 
@@ -86,7 +94,7 @@ const Navbar = ({
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" onClick={() => setIsOpen(prev => !prev)}>
-                                    <Menu className="size-8 text-zinc-900" />
+                                    <Menu className="size-8 text-gray-200" />
                                 </Button>
                             </SheetTrigger>
                             <SheetContent className="overflow-y-auto flex flex-col z-[999]" dir="ltr" side="left">
@@ -105,17 +113,25 @@ const Navbar = ({
                                             key={item.title}
                                             href={item.url}
                                             onClick={() => setIsOpen(prev => !prev)}
-                                            className="px-4 py-3 text-sm font-medium rounded-md text-zinc-800 hover:bg-muted hover:text-primary"
+                                            className="px-4 py-3 text-sm font-medium rounded-md text-gray-200 hover:bg-foreground hover:text-primary"
                                         >
                                             {item.title}
                                         </Link>
                                     ))}
                                 </div>
-                                <a href="tel:+989920801032" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
+                                <div className="flex flex-col gap-1.5">
+                                    <a href="tel:07984 653016" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
 
-                                    <Phone size={20} />
-                                    <span>09920801032</span>
-                                </a>
+                                        <Phone size={20} />
+                                        <span>07984653016</span>
+                                    </a>
+                                    <a href="tel:07999553838" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
+
+                                        <Phone size={20} />
+                                        <span>07999553838</span>
+                                    </a>
+                                </div>
+
 
 
                             </SheetContent>
@@ -124,12 +140,12 @@ const Navbar = ({
 
 
                         <Link href="/" className="text-xl font-bold text-primary">
-                            <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-14" />
+                            <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-20" />
                         </Link>
 
-                        <a href="tel:+989920801032" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
+                        <Link href="/booking" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
                             <Phone size={20} className="ringing-phone" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

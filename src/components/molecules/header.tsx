@@ -11,13 +11,13 @@ const slides = [
     title: ["Emergency Electrical In", "Manchester"],
     description:
       "",
-    image: "/images/header1.jpg",
+    image: "/images/header2.jpeg",
   },
   {
     title: ["Harnessing the Power Cuts?", ""],
     description:
       "",
-    image: "/images/header2.jpg",
+    image: "/images/header1.jpg",
   },
   {
     title: ["24/7 Emergency", "Electrical Assistance"],
@@ -76,9 +76,9 @@ export default function Header() {
                   >
                     <Link
                       href="/booking"
-                      className="w-fit text-[#010101] p-4 rounded-full bg-primary hover:bg-primary/90"
+                      className="w-fit text-[#010101] p-4 rounded-full bg-primary hover:bg-primary/90 transition"
                     >
-                      Schedule a Consultation
+                      Book Your Electrician Now
                     </Link>
                   </motion.div>
                 </div>
