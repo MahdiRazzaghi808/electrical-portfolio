@@ -52,8 +52,8 @@ const certificates: Certificate[] = [
 
 export default function CertificatesSlider() {
     return (
-        <div className="container mx-auto p-6 bg-white rounded-md shadow-md">
-            <h2 className="text-2xl font-bold mb-6 text-center">My Certificates</h2>
+        <div className="container mx-auto p-6 bg-foreground rounded-md shadow-md">
+            <h2 className="text-2xl text-gray-100 font-bold mb-6 text-center">My Certificates</h2>
             <Swiper
                 spaceBetween={20}
                 slidesPerView={1}
@@ -68,16 +68,16 @@ export default function CertificatesSlider() {
                 }}
             >
                 {certificates.map(({ id, title, issuedBy, date, imageUrl, description }) => (
-                    <SwiperSlide key={id} className="p-4 bg-gray-50 rounded-lg shadow-sm !h-[400px]">
+                    <SwiperSlide key={id} className="p-4 bg-background rounded-lg shadow-sm !h-[400px]">
                         <img
                             src={imageUrl}
                             alt={`${title} certificate`}
                             className="w-full h-60 object-cover mb-4 rounded-md"
                         />
-                        <h3 className="text-lg font-semibold">{title}</h3>
-                        <p className="text-sm text-gray-600">{issuedBy}</p>
-                        <p className="text-xs text-gray-500 mb-2">{new Date(date).toLocaleDateString()}</p>
-                        <p className="text-gray-700 text-sm line-clamp-3">{description}</p>
+                        <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
+                        <p className="text-sm text-gray-200">{issuedBy}</p>
+                        <p className="text-xs text-gray-100 mb-2">{new Date(date).toLocaleDateString()}</p>
+                        <p className="text-gray-400 text-sm line-clamp-3">{description}</p>
                         </SwiperSlide>
                 ))}
             </Swiper>

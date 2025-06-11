@@ -45,7 +45,7 @@ const Navbar = ({
 }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <section className="py-4 bg-white sticky top-0 z-[999] shadow-lg" dir="ltr">
+        <section className="py-4 bg-foreground sticky top-0 z-[999] shadow-lg" dir="ltr">
             <div className="container">
                 {/* Desktop Menu */}
                 <nav className="hidden w-full xl:flex xl:pl-24 2xl:pl-0">
@@ -53,8 +53,8 @@ const Navbar = ({
 
                         {/* Navigation Menu */}
                         <NavigationMenu>
-                            <Link href="/" className="text-xl font-bold text-primary border-r pr-3">
-                                Electrical 24/7
+                            <Link href="/" className="text-xl font-bold border-gray-200 border-r pr-3">
+                                <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-14" />
                             </Link>
 
                             <NavigationMenuList>
@@ -62,7 +62,7 @@ const Navbar = ({
                                     <NavigationMenuItem key={item.title}>
                                         <NavigationMenuLink
                                             href={item.url}
-                                            className="group inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-zinc-900  hover:text-primary"
+                                            className="group inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-100  hover:text-primary"
                                         >
                                             {item.title}
                                         </NavigationMenuLink>
@@ -76,8 +76,6 @@ const Navbar = ({
                             <Phone size={20} />
                             <span>09920801032</span>
                         </a>
-                        {/* <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" /> */}
-                        <img src="/images/Flag.png" alt="flag" width={120} height={60} className="fixed top-0 left-0" />
                     </div>
                 </nav>
 
@@ -95,7 +93,8 @@ const Navbar = ({
                                 <SheetHeader>
                                     <SheetTitle>
                                         <Link href="/" className="text-xl font-bold text-primary">
-                                            Electrical 24/7
+
+                                            <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-36" />
                                         </Link>
                                     </SheetTitle>
                                 </SheetHeader>
@@ -118,19 +117,18 @@ const Navbar = ({
                                     <span>09920801032</span>
                                 </a>
 
-                                {/* <Image src="/images/flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" /> */}
-                                <img src="/images/Flag.png" alt="flag" width={120} height={60} className="fixed bottom-0 left-0" />
+
                             </SheetContent>
                         </Sheet>
 
 
 
                         <Link href="/" className="text-xl font-bold text-primary">
-                            Electrical 24/7
+                            <Image src="/images/logo.png" alt="logo" width={500} height={500} className="w-14" />
                         </Link>
 
                         <a href="tel:+989920801032" className="w-fit flex items-center gap-3  p-2 rounded-lg bg-primary text-[#010101] transition duration-200 text-sm">
-                            <Phone size={20} className="ringing-phone"/>
+                            <Phone size={20} className="ringing-phone" />
                         </a>
                     </div>
                 </div>

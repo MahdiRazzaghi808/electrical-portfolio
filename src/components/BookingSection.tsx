@@ -84,10 +84,15 @@ export default function BookingSection() {
   };
 
   return (
-    <section className="container mx-auto p-6 py-12 bg-white rounded-md shadow-md my-12 relative overflow-hidden">
-      <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#ffbd39] rounded-full blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-yellow-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Book Our Services</h2>
+    <section className="container mx-auto p-6 py-12 bg-foreground rounded-md shadow-md my-12 relative overflow-hidden">
+      <>
+        <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#9c1923] rounded-full blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-[#c22530] rounded-full blur-3xl opacity-20 animate-pulse"></div>
+      </>
+
+
+
+      <h2 className="text-2xl font-bold text-gray-100 mb-6 text-center">Book Our Services</h2>
 
       <motion.div
         className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8"
@@ -97,7 +102,7 @@ export default function BookingSection() {
       >
         {/* Map Section */}
         <motion.div
-          className="h-[600px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2 w-full"
+          className="h-[600px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2"
           variants={itemVariants}
         >
           <MapContainer center={MANCHESTER_CENTER} zoom={12} style={{ height: '100%', width: '100%' }}>
@@ -118,19 +123,19 @@ export default function BookingSection() {
 
         {/* Booking Form Section */}
         <motion.div
-          className="bg-white rounded-lg shadow-xl p-8 lg:basis-1/2 w-full"
+          className="bg-background rounded-lg shadow-xl p-8 lg:basis-1/2 w-full"
           variants={itemVariants}
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <motion.div variants={itemVariants}>
-              <Label htmlFor="name" className="mb-2.5 ml-1">
+              <Label htmlFor="name" className="mb-2.5 ml-1 text-gray-300">
                 Full Name
               </Label>
               <Input
                 type="text"
                 name="name"
                 id="name"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition"
+                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
                 required
                 value={formData.name}
                 onChange={handleChange}
@@ -138,14 +143,14 @@ export default function BookingSection() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Label htmlFor="email" className="mb-2.5 ml-1">
+              <Label htmlFor="email" className="mb-2.5 ml-1 text-gray-300">
                 Email
               </Label>
               <Input
                 type="email"
                 name="email"
                 id="email"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition"
+                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
                 required
                 value={formData.email}
                 onChange={handleChange}
@@ -153,14 +158,14 @@ export default function BookingSection() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Label htmlFor="phone" className="mb-2.5 ml-1">
+              <Label htmlFor="phone" className="mb-2.5 ml-1 text-gray-300">
                 Phone Number
               </Label>
               <Input
                 type="tel"
                 name="phone"
                 id="phone"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition"
+                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
                 required
                 value={formData.phone}
                 onChange={handleChange}
@@ -168,14 +173,14 @@ export default function BookingSection() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Label htmlFor="message" className="mb-2.5 ml-1">
+              <Label htmlFor="message" className="mb-2.5 ml-1 text-gray-300">
                 Additional Information
               </Label>
               <textarea
                 name="message"
                 id="message"
                 rows={4}
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[#ffbd39] transition"
+                className="w-full px-5 py-3 border bg-gray-900 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
                 value={formData.message}
                 onChange={handleChange}
               />

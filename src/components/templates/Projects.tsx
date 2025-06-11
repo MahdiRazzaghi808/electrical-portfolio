@@ -53,16 +53,19 @@ export default function ProjectsPage() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
     return (
-        <div className="container my-12 bg-white text-gray-800 px-6 py-12 rounded-lg shadow-lg relative overflow-hidden">
-            <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#ffbd39] rounded-full blur-3xl opacity-30 animate-pulse"></div>
-            <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-yellow-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div className="container my-12 bg-foreground text-gray-300 px-6 py-12 rounded-lg shadow-lg relative overflow-hidden">
+            <>
+                <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#9c1923] rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-[#c22530] rounded-full blur-3xl opacity-20 animate-pulse"></div>
+            </>
+
             <h2 className="text-4xl font-bold mb-8 text-center">My Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}
                         whileHover={{ scale: 1.03 }}
-                        className="cursor-pointer bg-gray-50 shadow-md rounded-lg overflow-hidden transition"
+                        className="cursor-pointer bg-background shadow-md rounded-lg overflow-hidden transition"
                         onClick={() => setSelectedProject(project)}
                     >
                         {/* <Image
@@ -96,14 +99,14 @@ export default function ProjectsPage() {
                         onClick={() => setSelectedProject(null)}
                     >
                         <motion.div
-                            className="bg-white rounded-lg max-w-xl w-full p-8 relative z-60"
+                            className="bg-foreground rounded-lg max-w-xl w-full p-8 relative z-60"
                             initial={{ y: 100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 100, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()} // Prevent click-through close
                         >
                             <button
-                                className="absolute top-3 right-3 text-gray-500 hover:text-red-500 transition"
+                                className="absolute top-3 right-3 text-gray-300 hover:text-red-500 transition"
                                 onClick={() => setSelectedProject(null)}
                             >
                                 <X />
@@ -125,7 +128,7 @@ export default function ProjectsPage() {
 
 
                             <h2 className="text-2xl font-bold my-3">{selectedProject.title}</h2>
-                            <p className="text-gray-700">{selectedProject.description}</p>
+                            <p className="text-gray-500">{selectedProject.description}</p>
                         </motion.div>
                     </motion.div>
                 )}

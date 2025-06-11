@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-zinc-800 border-t border-zinc-200">
+    <footer className="bg-foreground text-gray-100 border-t border-[#9c1923]">
       <div className="container mx-auto py-16 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* 1. Brand */}
@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="bg-zinc-50 text-center text-xs text-zinc-500 py-6 border-t border-zinc-200">
+      <div className="bg-foreground text-center text-xs text-gray-200 py-6 border-t border-gray-500">
         &copy; {new Date().getFullYear()} Electrical 24/7. Built with ⚡ by an engineer who never sleeps.
       </div>
     </footer>

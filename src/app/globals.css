@@ -43,16 +43,16 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f3f3f3;
-  --foreground: #010101;
-  --card: #f3f3f3;
+  --background: #0d0d0d;
+  --foreground: #1a1a1a;
+  --card: #1a1a1a;
   --card-foreground: #010101;
-  --popover: #f3f3f3;
+  --popover: #1a1a1a;
   --popover-foreground: #010101;
-  --primary: #ffbd39;
+  --primary: #9c1923;
   --primary-foreground: #010101;
-  --secondary: #ffffff;
-  --secondary-foreground: #ffffff;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #1a1a1a;
   --muted: #f3f3f3;
   --muted-foreground: #010101;
   --accent: #ffbd39;
@@ -66,12 +66,12 @@
   --chart-3: #e6aa33;
   --chart-4: #b38829;
   --chart-5: #ffd999;
-  --sidebar: #ffffff;
+  --sidebar: #1a1a1a;
   --sidebar-foreground: #010101;
   --sidebar-primary: #ffbd39;
   --sidebar-primary-foreground: #010101;
   --sidebar-accent: #010101;
-  --sidebar-accent-foreground: #ffffff;
+  --sidebar-accent-foreground: #1a1a1a;
   --sidebar-border: #e6e6e6;
   --sidebar-ring: #ffbd39;
 }
@@ -125,6 +125,9 @@ input:-webkit-autofill {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+.swiper-slide {
+  @apply !relative !z-0;
 }
 
 @layer base {

@@ -1,52 +1,92 @@
+// components/Header.tsx
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 import { motion } from "framer-motion";
-import { Button } from "../atoms/button";
 import Link from "next/link";
+
+const slides = [
+  {
+    title: ["Emergency Electrical In", "Manchester"],
+    description:
+      "",
+    image: "/images/header1.jpg",
+  },
+  {
+    title: ["Harnessing the Power Cuts?", ""],
+    description:
+      "",
+    image: "/images/header2.jpg",
+  },
+  {
+    title: ["24/7 Emergency", "Electrical Assistance"],
+    description:
+      "",
+    image: "/images/header3.jpeg",
+  },
+];
 
 export default function Header() {
   return (
-    <header
-      className="bg-[url('/images/header.jpg')] bg-cover bg-center h-screen w-full text-white"
-      role="banner"
-    >
-      <div className="w-full h-full bg-black/50">
-        <div className="container py-24 flex flex-col gap-6 lg:max-w-2xl">
-          <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <p>
-              Electric Power,
-            </p>
-            <p>
-              Bright Ideas.
-            </p>
-          </motion.h1>
-
-          <motion.p
-            className="text-md md:text-lg text-gray-200 lg:max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Delivering cutting-edge electrical engineering solutions from power systems to renewable energy, tailored to drive your projects forward with precision and reliability.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-          >
-            <Link
-              href="/booking"
-              className="w-fit text-[#010101] p-4 rounded-full bg-primary hover:bg-primary/90"
+    <header role="banner">
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        loop
+        allowTouchMove={false}
+        simulateTouch={false}
+        keyboard={{ enabled: false }}
+        className="h-[90vh] lg:h-screen w-full"
+      >
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className="h-screen w-full bg-cover bg-center relative"
+              style={{ backgroundImage: `url(${slide.image})` }}
             >
-              Schedule a Consultation
-            </Link>
-          </motion.div>
-        </div>
-      </div>
+              <div className="absolute inset-0 bg-black/50 flex items-center">
+                <div className="container py-24 flex flex-col gap-6 lg:max-w-2xl text-white">
+                  <motion.h1
+                    className="text-4xl md:text-6xl font-bold leading-tight"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    {slide.title.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </motion.h1>
+
+                  <motion.p
+                    className="text-md md:text-lg text-gray-200"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                  >
+                    {slide.description}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7, duration: 0.5 }}
+                  >
+                    <Link
+                      href="/booking"
+                      className="w-fit text-[#010101] p-4 rounded-full bg-primary hover:bg-primary/90"
+                    >
+                      Schedule a Consultation
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </header>
   );
 }

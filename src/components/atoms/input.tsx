@@ -46,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="relative flex items-center">
         {startIcon}
         <input
-          className={cn(inputVariants({ variant }), className)}
+          className={cn(inputVariants({ variant }), className ,"bg-gray-900 text-gray-100")}
           ref={ref}
           value={onChange ? value || "" : (value ?? undefined)}
           onChange={(e) => {
