@@ -15,7 +15,7 @@ const counters = [
 export default function CounterSection() {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.3,
   });
 
   return (
