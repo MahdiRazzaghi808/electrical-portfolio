@@ -39,12 +39,12 @@ export default function Header() {
         allowTouchMove={false}
         simulateTouch={false}
         keyboard={{ enabled: false }}
-        className="h-[90vh] lg:h-screen w-full"
+        className="h-[50vh] lg:h-screen w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="h-screen w-full bg-cover bg-center relative"
+              className="h-[50vh] lg:h-screen w-full bg-cover bg-center relative"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               <div className="absolute inset-0 bg-black/50 flex items-center">
