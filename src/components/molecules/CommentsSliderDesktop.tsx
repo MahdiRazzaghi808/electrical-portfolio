@@ -83,9 +83,9 @@ const CommentsSliderDesktop = ({ comments }: { comments: Comment[] }) => {
                                 </div>
                             )}
 
-                            {comment.date && (
+                            {/* {comment.date && (
                                 <span className="text-gray-400 text-xs">{new Date(comment.date).toLocaleDateString()}</span>
-                            )}
+                            )} */}
                         </div>
                     </div>
                 </SwiperSlide>

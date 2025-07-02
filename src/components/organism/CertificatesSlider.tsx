@@ -68,15 +68,15 @@ export default function CertificatesSlider() {
                 }}
             >
                 {certificates.map(({ id, title, issuedBy, date, imageUrl, description }) => (
-                    <SwiperSlide key={id} className="p-4 bg-background rounded-lg shadow-sm !h-[400px]">
+                    <SwiperSlide key={id} className="p-4 bg-background rounded-lg shadow-sm !h-[350px]">
                         <img
                             src={imageUrl}
                             alt={`${title} certificate`}
                             className="w-full h-60 object-cover mb-4 rounded-md"
                         />
-                        <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
+                        {/* <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
                         <p className="text-sm text-gray-200">{issuedBy}</p>
-                        <p className="text-xs text-gray-100 mb-2">{new Date(date).toLocaleDateString()}</p>
+                        <p className="text-xs text-gray-100 mb-2">{new Date(date).toLocaleDateString()}</p> */}
                         <p className="text-gray-400 text-sm line-clamp-3">{description}</p>
                         </SwiperSlide>
                 ))}

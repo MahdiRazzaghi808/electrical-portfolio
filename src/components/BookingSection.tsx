@@ -9,6 +9,8 @@ import { Label } from '@/components/atoms/label';
 import { Button } from './atoms/button';
 
 import { motion } from 'framer-motion';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from './atoms/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './atoms/tabs';
 
 // Manchester city center coordinates
 const MANCHESTER_CENTER: LatLngExpression = [53.4808, -2.2426];
@@ -52,9 +54,10 @@ const serviceArea: LatLngExpression[] = [
 
 export default function BookingSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    fullName: '',
+    postCode: '',
+    serviceType: 1,
+    phoneNumber: '',
     message: '',
   });
 
@@ -72,7 +75,6 @@ export default function BookingSection() {
     }));
   };
 
-  // انیمیشن‌ها
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -102,7 +104,7 @@ export default function BookingSection() {
       >
         {/* Map Section */}
         <motion.div
-          className="h-[600px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2"
+          className="h-[630px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2"
           variants={itemVariants}
         >
           <MapContainer center={MANCHESTER_CENTER} zoom={12} style={{ height: '100%', width: '100%' }}>
@@ -126,75 +128,114 @@ export default function BookingSection() {
           className="bg-background rounded-lg shadow-xl p-8 lg:basis-1/2 w-full"
           variants={itemVariants}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <motion.div variants={itemVariants}>
-              <Label htmlFor="name" className="mb-2.5 ml-1 text-gray-300">
-                Full Name
-              </Label>
-              <Input
-                type="text"
-                name="name"
-                id="name"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
-                required
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Label htmlFor="email" className="mb-2.5 ml-1 text-gray-300">
-                Email
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
-                required
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Label htmlFor="phone" className="mb-2.5 ml-1 text-gray-300">
-                Phone Number
-              </Label>
-              <Input
-                type="tel"
-                name="phone"
-                id="phone"
-                className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-              />
-            </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Label htmlFor="message" className="mb-2.5 ml-1 text-gray-300">
-                Additional Information
-              </Label>
-              <textarea
-                name="message"
-                id="message"
-                rows={4}
-                className="w-full px-5 py-3 border bg-gray-900 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </motion.div>
+          <div className="">
+            <Tabs defaultValue="booking">
+              <TabsList className='w-full mb-8'>
+                <TabsTrigger value="booking">Booking</TabsTrigger>
+                <TabsTrigger value="testimonial">Testimonial</TabsTrigger>
+              </TabsList>
+              <TabsContent value="booking">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <motion.div variants={itemVariants}>
+                    <Label htmlFor="fullName" className="mb-2.5 ml-1 text-gray-300">
+                      Full Name
+                    </Label>
+                    <Input
+                      type="text"
+                      name="fullName"
+                      id="fullName"
+                      className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
+                      required
+                      value={formData.fullName}
+                      onChange={handleChange}
+                    />
+                  </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Button
-                className="w-full"
-                type="submit"
-              >
-                Book Now
-              </Button>
-            </motion.div>
-          </form>
+
+                  <motion.div variants={itemVariants}>
+                    <Label htmlFor="postCode" className="mb-2.5 ml-1 text-gray-300">
+                      Post Code
+                    </Label>
+                    <Input
+                      type="number"
+                      name="postCode"
+                      id="postCode"
+                      className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
+                      required
+                      value={formData.postCode}
+                      onChange={handleChange}
+                    />
+                  </motion.div>
+
+                  <motion.div variants={itemVariants}>
+                    <Label htmlFor="phoneNumber" className="mb-2.5 ml-1 text-gray-300">
+                      Service Type
+                    </Label>
+
+                    <Select onValueChange={(value) => setFormData({ ...formData, serviceType: +value })} >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a Service Type" className='text-white' />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem value="1">Installation</SelectItem>
+                          <SelectItem value="2">Support</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants}>
+                    <Label htmlFor="phoneNumber" className="mb-2.5 ml-1 text-gray-300">
+                      Phone Number
+                    </Label>
+                    <Input
+                      type="tel"
+                      name="phoneNumber"
+                      id="phoneNumber"
+                      className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
+                      required
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                    />
+                  </motion.div>
+
+
+
+
+                  <motion.div variants={itemVariants}>
+                    <Label htmlFor="message" className="mb-2.5 ml-1 text-gray-300">
+                      Message
+                    </Label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      rows={4}
+                      className="w-full px-5 py-3 border bg-gray-900 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </motion.div>
+
+                  <motion.div variants={itemVariants}>
+                    <Button
+                      className="w-full"
+                      type="submit"
+                    >
+                      Book Now
+                    </Button>
+                  </motion.div>
+                </form>
+              </TabsContent>
+              <TabsContent value="testimonial">
+
+              </TabsContent>
+            </Tabs>
+          </div>
+
         </motion.div>
       </motion.div>
     </section>
