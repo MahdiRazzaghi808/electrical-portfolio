@@ -4,25 +4,25 @@ import t from '@/json/fa.json';
 import { coreApi } from "@/api/instance/core-api"; 
 import type { ApiResponse } from "@/api/types/api.types";
 import { requestHandler } from "@/api/utils/request-handler";
-import { getUsersSchema as schema } from "./get-users.schema";
+import { getListCertificateSchema as schema } from "./get-list-certificate.schema";
 import type {
-  GetUsersRequest,
-  GetUsersResponse,
-  GetUsersResponseTransformed,
-} from "./get-users.types";
+  GetListCertificateRequest,
+  GetListCertificateResponse,
+  GetListCertificateResponseTransformed,
+} from "./get-list-certificate.types";
 import { AxiosRequestConfig } from "axios";
 
-const getUsersURL = () => path.join("users");
+const getListCertificateURL = () => path.join("/Certificate/GetPagedListCertificate");
 
-export const getUsers = async (
-  props?: GetUsersRequest,
+export const getListCertificate = async (
+  props?: GetListCertificateRequest,
   options?: AxiosRequestConfig, 
-): Promise<ApiResponse<GetUsersResponseTransformed>> => {
+): Promise<ApiResponse<GetListCertificateResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
-  const URL = getUsersURL();
+  const URL = getListCertificateURL();
 
   const response = await requestHandler(
-    () => coreApi.get<GetUsersResponse>(URL, { params: payloadParsed , ...options}),
+    () => coreApi.get<GetListCertificateResponse>(URL, { params: payloadParsed , ...options}),
     schema.response._def.schema,
     {
       isMock: false,
@@ -33,7 +33,6 @@ export const getUsers = async (
     response.data = schema.response.parse(response.data);
   } catch {
     toast.error(t.toast.error.parseResponse);
-
   }
 
   return response;

@@ -4,26 +4,25 @@ import t from '@/json/fa.json';
 import { coreApi } from "@/api/instance/core-api"; 
 import type { ApiResponse } from "@/api/types/api.types";
 import { requestHandler } from "@/api/utils/request-handler";
-import { deleteDeleteBookingSchema as schema } from "./delete-delete-booking.schema";
+import { getListPortofiloSchema as schema } from "./get-list-portofilo.schema";
 import type {
-  DeleteDeleteBookingRequest,
-  DeleteDeleteBookingResponseTransformed,
-} from "./delete-delete-booking.types";
+  GetListPortofiloRequest,
+  GetListPortofiloResponse,
+  GetListPortofiloResponseTransformed,
+} from "./get-list-portofilo.types";
 import { AxiosRequestConfig } from "axios";
 
-export const deleteDeleteBookingURL = (id: DeleteDeleteBookingRequest['id']) =>
-  path.join(`/Booking/DeleteBooking?Id=${id}`);
+const getListPortofiloURL = () => path.join("/Portofilo/GetPagedListPortofilo");
 
-export const deleteDeleteBooking = async (
-  props?: DeleteDeleteBookingRequest,
-  option?: AxiosRequestConfig, 
-): Promise<ApiResponse<DeleteDeleteBookingResponseTransformed>> => {
+export const getListPortofilo = async (
+  props?: GetListPortofiloRequest,
+  options?: AxiosRequestConfig, 
+): Promise<ApiResponse<GetListPortofiloResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
-
-  const URL = deleteDeleteBookingURL(payloadParsed.id);
+  const URL = getListPortofiloURL();
 
   const response = await requestHandler(
-    () => coreApi.delete(URL),
+    () => coreApi.get<GetListPortofiloResponse>(URL, { params: payloadParsed , ...options}),
     schema.response._def.schema,
     {
       isMock: false,

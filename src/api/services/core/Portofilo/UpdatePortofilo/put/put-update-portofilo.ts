@@ -4,26 +4,26 @@ import t from '@/json/fa.json';
 import { coreApi } from "@/api/instance/core-api";
 import type { ApiResponse } from "@/api/types/api.types";
 import { requestHandler } from "@/api/utils/request-handler";
-import { deleteDeleteTestimonialSchema as schema } from "./delete-delete-testimonial.schema";
+import { putUpdatePortofiloSchema as schema } from "./put-update-portofilo.schema";
 import type {
-  DeleteDeleteTestimonialRequest,
-  DeleteDeleteTestimonialResponseTransformed,
-} from "./delete-delete-testimonial.types";
+  PutUpdatePortofiloRequest,
+  PutUpdatePortofiloResponseTransformed,
+} from "./put-update-portofilo.types";
 import { AxiosRequestConfig } from "axios";
 
-export const deleteDeleteTestimonialURL = (id: DeleteDeleteTestimonialRequest['id']) =>
-  path.join(`/Testimonial/DeleteTestimonial?Id=${id}`);
+export const putUpdatePortofiloURL = () =>
+  path.join("/Portofilo/UpdatePortofilo");
 
-export const deleteDeleteTestimonial = async (
-  props?: DeleteDeleteTestimonialRequest,
+export const putUpdatePortofilo = async (
+  props?: PutUpdatePortofiloRequest,
   option?: AxiosRequestConfig,
-): Promise<ApiResponse<DeleteDeleteTestimonialResponseTransformed>> => {
+): Promise<ApiResponse<PutUpdatePortofiloResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
 
-  const URL = deleteDeleteTestimonialURL(payloadParsed.id);
+  const URL = putUpdatePortofiloURL();
 
   const response = await requestHandler(
-    () => coreApi.delete(URL),
+    () => coreApi.put(URL, payloadParsed),
     schema.response._def.schema,
     {
       isMock: false,

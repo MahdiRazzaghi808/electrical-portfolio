@@ -1,6 +1,5 @@
-import { z } from 'zod';
 import { coreApiMutationResponseSchema } from '@/api/instance/core-api';
-import t from '@/json/fa.json';
+import { z } from 'zod';
 
 // Request
 export const deleteDeleteBookingRequestSchemaTransformed = z

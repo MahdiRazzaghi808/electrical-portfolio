@@ -4,26 +4,26 @@ import t from '@/json/fa.json';
 import { coreApi } from "@/api/instance/core-api";
 import type { ApiResponse } from "@/api/types/api.types";
 import { requestHandler } from "@/api/utils/request-handler";
-import { deleteDeleteTestimonialSchema as schema } from "./delete-delete-testimonial.schema";
+import { putUpdateCertificateSchema as schema } from "./put-update-certificate.schema";
 import type {
-  DeleteDeleteTestimonialRequest,
-  DeleteDeleteTestimonialResponseTransformed,
-} from "./delete-delete-testimonial.types";
+  PutUpdateCertificateRequest,
+  PutUpdateCertificateResponseTransformed,
+} from "./put-update-certificate.types";
 import { AxiosRequestConfig } from "axios";
 
-export const deleteDeleteTestimonialURL = (id: DeleteDeleteTestimonialRequest['id']) =>
-  path.join(`/Testimonial/DeleteTestimonial?Id=${id}`);
+export const putUpdateCertificateURL = (id: PutUpdateCertificateRequest['id']) =>
+  path.join("/CertificateUpdateCertificate", `${id}`);
 
-export const deleteDeleteTestimonial = async (
-  props?: DeleteDeleteTestimonialRequest,
+export const putUpdateCertificate = async (
+  props?: PutUpdateCertificateRequest,
   option?: AxiosRequestConfig,
-): Promise<ApiResponse<DeleteDeleteTestimonialResponseTransformed>> => {
+): Promise<ApiResponse<PutUpdateCertificateResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
 
-  const URL = deleteDeleteTestimonialURL(payloadParsed.id);
+  const URL = putUpdateCertificateURL(payloadParsed.id);
 
   const response = await requestHandler(
-    () => coreApi.delete(URL),
+    () => coreApi.put(URL, payloadParsed),
     schema.response._def.schema,
     {
       isMock: false,

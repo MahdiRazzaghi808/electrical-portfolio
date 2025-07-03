@@ -4,23 +4,23 @@ import t from '@/json/fa.json';
 import { coreApi } from "@/api/instance/core-api"; 
 import type { ApiResponse } from "@/api/types/api.types";
 import { requestHandler } from "@/api/utils/request-handler";
-import { deleteDeleteBookingSchema as schema } from "./delete-delete-booking.schema";
+import { deleteDeleteCertificateSchema as schema } from "./delete-delete-certificate.schema";
 import type {
-  DeleteDeleteBookingRequest,
-  DeleteDeleteBookingResponseTransformed,
-} from "./delete-delete-booking.types";
+  DeleteDeleteCertificateRequest,
+  DeleteDeleteCertificateResponseTransformed,
+} from "./delete-delete-certificate.types";
 import { AxiosRequestConfig } from "axios";
 
-export const deleteDeleteBookingURL = (id: DeleteDeleteBookingRequest['id']) =>
-  path.join(`/Booking/DeleteBooking?Id=${id}`);
+export const deleteDeleteCertificateURL = (id: DeleteDeleteCertificateRequest['id']) => 
+  path.join("/Certificate/DeleteCertificate", `${id}`);
 
-export const deleteDeleteBooking = async (
-  props?: DeleteDeleteBookingRequest,
+export const deleteDeleteCertificate = async (
+  props?: DeleteDeleteCertificateRequest,
   option?: AxiosRequestConfig, 
-): Promise<ApiResponse<DeleteDeleteBookingResponseTransformed>> => {
+): Promise<ApiResponse<DeleteDeleteCertificateResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
 
-  const URL = deleteDeleteBookingURL(payloadParsed.id);
+  const URL = deleteDeleteCertificateURL(payloadParsed.id);
 
   const response = await requestHandler(
     () => coreApi.delete(URL),
