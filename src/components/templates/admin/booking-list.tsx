@@ -1,17 +1,19 @@
 "use client"
 
-import { PhoneCall, Trash2 } from "lucide-react"
-import React, { useState } from "react"
+import { useDeleteDeleteBooking } from "@/api/services/core/Booking/DeleteBooking/delete/use-delete-delete-booking"
+import { Button } from "@/components/atoms/button"
 import {
     Dialog,
-    DialogTrigger,
+    DialogClose,
     DialogContent,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogFooter,
-    DialogClose,
+    DialogTrigger,
 } from "@/components/atoms/dialog"
-import { Button } from "@/components/atoms/button"
+import { useQueryClient } from "@tanstack/react-query"
+import { PhoneCall, Trash2 } from "lucide-react"
+import { useState } from "react"
 
 type Booking = {
     id: number
@@ -24,13 +26,22 @@ type Booking = {
 
 const BookingList = ({
     bookings,
-    onDelete,
 }: {
     bookings: Booking[]
-    onDelete?: (id: number) => void
 }) => {
     const [selectedId, setSelectedId] = useState<number | null>(null)
 
+    const queryClient = useQueryClient();
+    const mutation = useDeleteDeleteBooking({
+        onSuccess: () => {
+            // queryClient.invalidateQueries(getBookingQueryKey({ PageNumber: 1, pageSize: 10, searchKey: '' }))
+        },
+        onError: () => {
+        },
+    });
+    const onDelete = async (id: number) => {
+        mutation.mutate({ id })
+    }
     return (
         <div className="my-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -1,10 +1,12 @@
 // components/CommentList.tsx
 "use client"
 
+import { useDeleteDeleteTestimonial } from "@/api/services/core/Testimonial/DeleteTestimonial/delete/use-delete-delete-testimonial"
 import { Button } from "@/components/atoms/button"
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/atoms/dialog"
+import { useQueryClient } from "@tanstack/react-query"
 import { Trash2 } from "lucide-react"
-import React, { useState } from "react"
+import { useState } from "react"
 
 interface Comment {
     id: number
@@ -18,9 +20,22 @@ interface CommentListProps {
 
 }
 
-const CommentList = ({ fakeComments, onDelete }: CommentListProps) => {
+const CommentList = ({ fakeComments }: CommentListProps) => {
     const [selectedId, setSelectedId] = useState<number | null>(null)
 
+
+    const queryClient = useQueryClient();
+    const mutation = useDeleteDeleteTestimonial({
+        onSuccess: () => {
+            // queryClient.invalidateQueries(getBookingQueryKey({ PageNumber: 1, pageSize: 10, searchKey: '' }))
+        },
+        onError: () => {
+        },
+    });
+    
+    const onDelete = async (id: number) => {
+        mutation.mutate({ id })
+    }
 
 
     return (

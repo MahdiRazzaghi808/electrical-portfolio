@@ -17,7 +17,7 @@ const PaginationContent = forwardRef<HTMLUListElement, ComponentProps<"ul">>(
   ({ className, ...props }, ref) => (
     <ul
       ref={ref}
-      className={cn("flex flex-row-reverse items-center gap-1", className)}
+      className={cn("flex flex-row items-center gap-1", className)}
       {...props}
     />
   )
@@ -45,8 +45,9 @@ const PaginationButton = ({
     size={size}
     variant={isActive ? "outline" : "ghost"}
     className={cn(
+      "bg-gray-200",
       isActive
-        ? "hover:bg-transparent border-amber-700"
+        ? "hover:bg-transparent bg-transparent border-amber-700"
         : "hover:bg-purple-100",
       " p-0 mx-[0.2rem] md:mx-[0.3rem] h-7 w-7 cursor-pointer rounded-sm text-sm",
       className

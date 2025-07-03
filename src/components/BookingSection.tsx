@@ -11,6 +11,8 @@ import { Button } from './atoms/button';
 import { motion } from 'framer-motion';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from './atoms/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './atoms/tabs';
+import { usePostCreateBooking } from '@/api/services/core/Booking/CreateBooking/post/use-post-create-booking';
+import Comment from './comment';
 
 // Manchester city center coordinates
 const MANCHESTER_CENTER: LatLngExpression = [53.4808, -2.2426];
@@ -60,11 +62,15 @@ export default function BookingSection() {
     phoneNumber: '',
     message: '',
   });
-
+  const mutation = usePostCreateBooking({
+    onSuccess: () => {
+    },
+    onError: () => {
+    },
+  });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    mutation.mutate(formData)
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -104,7 +110,7 @@ export default function BookingSection() {
       >
         {/* Map Section */}
         <motion.div
-          className="h-[630px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2"
+          className="h-[720px] w-full rounded-lg overflow-hidden shadow-lg lg:basis-1/2"
           variants={itemVariants}
         >
           <MapContainer center={MANCHESTER_CENTER} zoom={12} style={{ height: '100%', width: '100%' }}>
@@ -125,13 +131,13 @@ export default function BookingSection() {
 
         {/* Booking Form Section */}
         <motion.div
-          className="bg-background rounded-lg shadow-xl p-8 lg:basis-1/2 w-full"
+          className="bg-background rounded-lg shadow-xl p-8 lg:basis-1/2 w-full lg:h-[720px]"
           variants={itemVariants}
         >
 
 
 
-          <div className="">
+          <div className="h-full">
             <Tabs defaultValue="booking">
               <TabsList className='w-full mb-8'>
                 <TabsTrigger value="booking">Booking</TabsTrigger>
@@ -231,7 +237,7 @@ export default function BookingSection() {
                 </form>
               </TabsContent>
               <TabsContent value="testimonial">
-
+               <Comment/>
               </TabsContent>
             </Tabs>
           </div>
