@@ -5,7 +5,6 @@ import { z } from 'zod';
 import t from '@/json/fa.json';
 import { capitalize, trimRequestData } from '@/utils/strings';
 import { cookie, COOKIE_KEYS } from '@/utils/cookies';
-import { localStorage } from '@/utils/local-storage';
 
 let isRefreshing = false;
 let failedQueue: {
@@ -31,7 +30,7 @@ export const coreApiPaginatedRequestSchema = <
 ) => {
   return z
     .object({
-      pageNumber: z.number().int().optional(),
+      PageNumber: z.number().int().optional(),
       pageSize: z.number().int().optional(),
       searchKey: z.string().optional(),
       sortName: z.string().optional().nullable(),
@@ -48,12 +47,11 @@ export const coreApiPaginatedRequestSchema = <
 export const coreApiPaginatedResponseSchema = <T>(schema: z.ZodType<T>) => {
   return z
     .object({
-      hasNextPage: z.boolean(),
-      hasPreviousPage: z.boolean(),
       pageNumber: z.number().int().nonnegative(),
-      totalCount: z.number().int().nonnegative(),
+      totalItems: z.number().int().nonnegative(),
+      pageSize: z.number().int().nonnegative(),
       totalPages: z.number().int().nonnegative(),
-      items: z.array(schema),
+      data: z.array(schema),
     })
     .transform((data) => data);
 };
@@ -69,7 +67,7 @@ export const coreApiMutationResponseSchema = <T>(schema?: z.ZodType<T>) => {
 export type CoreSortType = 'asc' | 'desc' | null;
 
 export const coreApi: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: "https://api.localelectrician24-7.co.uk/api/v1",
   headers: {
     'Content-Type': 'application/json',
   },
@@ -78,7 +76,7 @@ export const coreApi: AxiosInstance = axios.create({
 
 coreApi.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   // Optional: attach token for SSR/fallback cases if needed
-  const token = cookie[COOKIE_KEYS.USER_INFO].get()?.token;
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -116,7 +114,7 @@ coreApi.interceptors.response.use(
         processQueue(refreshError, null);
         cookie[COOKIE_KEYS.USER_INFO].remove();
         localStorage.clear();
-        window.location.href = `/login?next=${window.location.pathname}${window.location.search}`;
+        window.location.href = `/admin?next=${window.location.pathname}${window.location.search}`;
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

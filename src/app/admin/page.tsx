@@ -1,19 +1,32 @@
 'use client';
 
+import { usePostAuthenticate } from "@/api/services/core/Account/Authenticate/post/use-post-authenticate";
 import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 
 export default function Login() {
-    const [formData, setFormData] = useState({ email: "", password: "" });
+    const [formData, setFormData] = useState({ userName: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    const mutation = usePostAuthenticate(
+        {
+            onSuccess: (data) => {
+                localStorage.setItem("token", data.data?.data?.jwToken);
+                window.location.href = "/admin/booking";
+            },
+            onError: (error) => {
+                alert(error.message);
+            }
+        }
+    );
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`Welcome, ${formData.email}!`);
+        mutation.mutate(formData);
     };
 
     return (
@@ -40,20 +53,20 @@ export default function Login() {
                 <form onSubmit={handleSubmit} className="space-y-7">
                     <div>
                         <label
-                            htmlFor="email"
+                            htmlFor="userName"
                             className="block mb-2 text-gray-200 font-semibold tracking-wide"
                         >
-                            Email Address
+                            Username
                         </label>
                         <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="your.email@example.com"
-                            value={formData.email}
+                            id="userName"
+                            name="userName"
+                            type="userName"
+                            placeholder=""
+                            value={formData.userName}
                             onChange={handleChange}
                             required
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition"
                         />
                     </div>
 
@@ -68,11 +81,10 @@ export default function Login() {
                             id="password"
                             name="password"
                             type={showPassword ? "text" : "password"}
-                            placeholder="••••••••"
                             value={formData.password}
                             onChange={handleChange}
                             required
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition pr-14"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-primary transition pr-14"
                         />
                         <button
                             type="button"

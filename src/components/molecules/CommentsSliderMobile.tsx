@@ -10,13 +10,10 @@ import { EffectCards, Autoplay } from 'swiper/modules';
 import { Star } from 'lucide-react';
 
 type Comment = {
-    name: string;
-    text: string;
-    role?: string;
+    fullName: string;
+    message: string;
+    id?: number;
     avatar?: string;
-    date?: string;
-    rating?: number;
-    location?: string;
 };
 
 const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
@@ -48,7 +45,7 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                     {comment.avatar ? (
                         <img
                             src={comment.avatar}
-                            alt={`${comment.name} avatar`}
+                            alt={`${comment.fullName} avatar`}
                             className="w-20 h-20 rounded-full mx-auto border-4 border-primary shadow-md mb-5 object-cover"
                         />
                     ) : (
@@ -60,7 +57,7 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
                 mx-auto
               "
                         >
-                            {comment.name.charAt(0)}
+                            {comment.fullName.charAt(0)}
                         </div>
                     )}
 
@@ -74,29 +71,25 @@ const CommentsSliderMobile = ({ comments }: { comments: Comment[] }) => {
               before:rounded-sm before:shadow-sm
             "
                     >
-                        "{comment.text}"
+                        "{comment.message}"
                     </blockquote>
 
                     <h3 className="mt-5 text-gray-600 font-extrabold text-lg tracking-wide">
-                        {comment.name}
+                        {comment.fullName}
                     </h3>
-                    {comment.role && (
-                        <p className="text-primary text-xs italic my-2">{comment.role}</p>
-                    )}
 
-                    {comment.rating !== undefined && comment.rating !== null && (
-                        <div className="flex items-center justify-center">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                                <Star
-                                    key={i}
-                                    size={20}
-                                    className={i < comment.rating! ? 'text-primary' : 'text-gray-300'}
-                                    fill={i < comment.rating! ? 'currentColor' : 'none'}
-                                    strokeWidth={2}
-                                />
-                            ))}
-                        </div>
-                    )}
+
+                    <div className="flex items-center justify-center">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                                key={i}
+                                size={20}
+                                className={i < 5 ? 'text-primary' : 'text-gray-300'}
+                                fill={i < 5 ? 'currentColor' : 'none'}
+                                strokeWidth={2}
+                            />
+                        ))}
+                    </div>
 
                 </SwiperSlide>
             ))}

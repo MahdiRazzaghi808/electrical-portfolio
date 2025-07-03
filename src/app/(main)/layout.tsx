@@ -9,14 +9,12 @@ export default function MainLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={` text-gray-900`}>
-                <ApiProvider>
-                    <Navbar />
-                    <div className="min-h-screen">{children}</div>
-                    <Footer />
-                </ApiProvider>
-            </body>
-        </html>
+
+        <div>
+            <Navbar />
+            <div className="min-h-screen">{children}</div>
+            <Footer />
+        </div>
+
     );
 }
